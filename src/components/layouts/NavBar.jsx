@@ -12,8 +12,8 @@ function NavBar() {
   return (
     <nav>
       <div
-        className="offcanvas offcanvas-start sidenav"
-        tabindex="-1"
+        className="offcanvas offcanvas-start sidenav bg-dark text-light"
+        tabIndex="-1"
         id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel"
       >
@@ -21,7 +21,7 @@ function NavBar() {
           <h5 className="offcanvas-title" id="offcanvasExampleLabel">
             BLOG Admin
           </h5>
-          <Link className="nav-link p-2" to="/login">
+          <Link className="nav-link p-2" to="/login" title="Connexion">
             <RiLoginCircleLine 
               className="text-secondary" 
               size={"2rem"} />
@@ -30,7 +30,7 @@ function NavBar() {
         <div className="offcanvas-body">
           <ul className="navbar-nav">
             <li className="nav-item p-2">
-              <Link className="nav-link p-1" to="/">
+              <Link className="nav-link p-1" to="/" title="Accueil">
                 <RiHome4Fill 
                   className="text-secondary me-2" 
                   size={"1.4rem"} />
@@ -38,7 +38,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item p-2">
-              <Link className="nav-link p-1" to="/accounts">
+              <Link className="nav-link p-1" to="/accounts" title="Gestion utilisateurs">
                 <RiFolderUserFill
                   className="text-secondary me-2"
                   size={"1.4rem"}
@@ -47,7 +47,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item p-1">
-              <Link className="nav-link p-2" to="/articles">
+              <Link className="nav-link p-2" to="/articles" title="Gestion articles">
                 <RiArticleFill
                   className="text-secondary me-2"
                   size={"1.4rem"}
@@ -56,7 +56,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item p-1">
-              <Link className="nav-link p-2" to="/themes">
+              <Link className="nav-link p-2" to="/themes" title="Gestion thèmes">
                 <MdCategory 
                   className="text-secondary me-2" 
                   size={"1.4rem"} />
@@ -64,7 +64,7 @@ function NavBar() {
               </Link>
             </li>
             <li className="nav-item p-1">
-              <Link className="nav-link p-2" to="/tags">
+              <Link className="nav-link p-2" to="/tags" title="Gestion mots-clés">
                 <RiPriceTag3Fill
                   className="text-secondary me-2"
                   size={"1.4rem"}

@@ -1,7 +1,13 @@
 .sidenav {
+
   visibility:visible;
   transform: translateX(0) !important;
   width: 200px !important;
+}
+
+.main{
+    width: calc(100vw - 200px);
+    margin-left:200px;
 }
 
 

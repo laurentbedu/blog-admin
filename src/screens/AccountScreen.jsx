@@ -28,7 +28,7 @@ function AccountScreen() {
                 </tr>
             </thead>
             <tbody>
-                {users.map(user => { console.log(user)
+                {users.map(user => {
                     return(<tr key={user.Id_appUser} onClick={()=>{navigate(`/account/${user.Id_appUser}`);}}>
                         <td>{user.pseudo}</td>
                         <td></td>

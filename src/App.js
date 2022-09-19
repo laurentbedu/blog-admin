@@ -3,18 +3,32 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BaseScreen from "./screens/BaseScreen";
+import LandingScreen from "./screens/LandingScreen";
+import LoginScreen from "./screens/LoginScreen";
+import AccountScreen from "./screens/AccountScreen";
+import ArticleScreen from "./screens/ArticleScreen";
+import ThemeScreen from "./screens/ThemeScreen";
+import TagScreen from "./screens/TagScreen";
+import TagDetailScreen from "./screens/TagDetailScreen";
+import ThemeDetailScreen from "./screens/ThemeDetailScreen";
+import ArticleDetailScreen from "./screens/ArticleDetailScreen";
+import AccountDetailScreen from "./screens/AccountDetailScreen";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<BaseScreen />}>
-          <Route index element={<h1>Landing Screen</h1>} />
-          <Route path="/login" element={<h1>Login Screen</h1>} />
-          <Route path="/accounts" element={<h1>List of accounts</h1>} />
-          <Route path="/articles" element={<h1>List of articles</h1>} />
-          <Route path="/themes" element={<h1>List of themes</h1>} />
-          <Route path="/tags" element={<h1>List of tags</h1>} />
+          <Route index element={<LandingScreen/>} />
+          <Route path="/login" element={<LoginScreen/>} />
+          <Route path="/accounts" element={<AccountScreen/>} />
+          <Route path="/account/:id" element={<AccountDetailScreen/>} />
+          <Route path="/articles" element={<ArticleScreen/>} />
+          <Route path="/article/:id" element={<ArticleDetailScreen/>} />
+          <Route path="/themes" element={<ThemeScreen/>} />
+          <Route path="/theme/:id" element={<ThemeDetailScreen/>} />
+          <Route path="/tags" element={<TagScreen/>} />
+          <Route path="/tag/:id" element={<TagDetailScreen/>} />
           <Route path="*" element={<h1>404 not found</h1>} />
         </Route>
       </Routes>

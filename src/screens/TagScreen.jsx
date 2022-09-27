@@ -80,7 +80,6 @@ function TagScreen() {
         console.log("delete " + id)
     }
 
-    console.log("render")
     return ( <>
         <h1>Liste des mots-clés</h1>
         <button type="button" className="btn btn-success" onClick={addTag} disabled={tags.find(item => !item.Id_tag) || editedTag}>Nouveau mot-clé</button>

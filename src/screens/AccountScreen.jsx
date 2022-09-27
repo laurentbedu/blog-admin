@@ -10,7 +10,7 @@ function AccountScreen() {
             body: JSON.stringify({with:['account','role']})
         })
         .then(resp => resp.json())
-        .then(json => {
+        .then(json => { 
             setUsers(json)
         });
 

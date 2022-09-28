@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import CustomMessageAlert from "../components/customs/CustomMessageAlert";
+import CustomYesNoModal from "../components/customs/CustomYesNoModal";
 
 function TagScreen() {
 
@@ -76,14 +78,41 @@ function TagScreen() {
         setEditedTag(null);
     }
 
-    const deleteTag = (id) => {
-        console.log("delete " + id)
+    const [modalProps, setModalProps] = useState(null);
+    const [alertProps, setAlertProps] = useState(null);
+    const deleteTag = (tag) => {
+        console.log("deleting tag with id " + tag.Id_tag)
+        setModalProps({
+            title:"Supression du tag "+tag.title+" ?",
+            confirm:()=>{
+                fetch("http://blog.api/tag/" + tag.Id_tag, {
+                    method: "PATCH",
+                })
+                .then(resp => resp.json())
+                .then(json => {
+                    if(json){
+                        console.log("tag with id " + tag.Id_tag + " deleted");
+                        setAlertProps({
+                            type:"danger",
+                            message:"Le tag "+tag.title+" à été supprimé.",
+                            show:true
+                        });
+                    }
+                    getAllData();
+                    setTimeout(()=> {
+                        setAlertProps({show:false})
+                    }, 1500)
+                })
+            }
+        })
     }
 
     return ( <>
+
         <h1>Liste des mots-clés</h1>
-        <button type="button" className="btn btn-success" onClick={addTag} disabled={tags.find(item => !item.Id_tag) || editedTag}>Nouveau mot-clé</button>
-        <table className="table table-striped">
+        <button type="button" className="btn btn-success mb-2" onClick={addTag} disabled={tags.find(item => !item.Id_tag) || editedTag}>Nouveau mot-clé</button>
+        <CustomMessageAlert type={alertProps?.type} message={alertProps?.message} show={alertProps?.show}/>
+        <table className="table table-striped mb-5">
             <thead>
                 <tr>
                     <th scope="col">mot-clé</th>
@@ -108,7 +137,8 @@ function TagScreen() {
                                         Edit
                                     </button>
                                     <button type="button" className="btn btn-sm btn-danger" 
-                                            onClick={() => deleteTag(tag.Id_tag)} 
+                                            data-bs-toggle="modal" data-bs-target="#customCheckModal"
+                                            onClick={() => deleteTag(tag)} 
                                             disabled={tags.find(item => !item.Id_tag) || editedTag}>
                                         Del.
                                     </button>
@@ -151,6 +181,7 @@ function TagScreen() {
                 })}
             </tbody>
         </table>
+        <CustomYesNoModal title={modalProps?.title} confirm={modalProps?.confirm}/>
     </> );
 }
 
